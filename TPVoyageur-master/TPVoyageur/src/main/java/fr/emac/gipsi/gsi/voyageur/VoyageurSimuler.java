@@ -12,6 +12,8 @@ public class VoyageurSimuler extends AbstractVoyageur {
     /**
      *
      */
+	
+	
     public VoyageurSimuler() {
         // TODO Auto-generated constructor stub
     }
@@ -20,41 +22,113 @@ public class VoyageurSimuler extends AbstractVoyageur {
      * @see fr.emac.gipsi.gsi.voyageur.AbstractVoyageur#forward()
      */
     @Override
+    
+    
     protected void forward() {
-        // TODO Auto-generated method stub
     	String direction = getDirection();
+    	int XBody = getPosBody().getX();
+    	int YBody = getPosBody().getY();
+    	int XTete = getPosTete().getX();
+    	int YTete = getPosTete().getY();
     	if (direction == "N") {
-    		getPosBody().setX(getPosBody().getX() + 1);
-    		getPosTete().setX(getPosTete().getX() + 1);
-    		else if (direction == "S") {
-    			
-    		}
+    		getPosBody().setX(XBody + 1);
+    		getPosTete().setX(XTete + 1);
+    	}
+    	else if (direction == "S") {
+    		getPosBody().setX(XBody - 1);
+    		getPosTete().setX(XTete - 1);
+    	}
+    	else if (direction == "E") {
+    		getPosBody().setY(YBody + 1);
+    		getPosTete().setY(YTete + 1);
+		}
+    	else if (direction == "W") {
+    		getPosBody().setY(YBody - 1);
+    		getPosTete().setY(YTete - 1);
+		}
     	goForward();
 
     }
 
-    /* (non-Javadoc)
-     * @see fr.emac.gipsi.gsi.voyageur.AbstractVoyageur#backward()
-     */
-    @Override
+    
     protected void backward() {
-        // TODO Auto-generated method stub
-
+    	String direction = getDirection();
+    	int XBody = getPosBody().getX();
+    	int YBody = getPosBody().getY();
+    	int XTete = getPosTete().getX();
+    	int YTete = getPosTete().getY();
+    	if (direction == "N") {
+    		getPosBody().setX(XBody - 1);
+    		getPosTete().setX(XTete - 1);
+    	}
+    	else if (direction == "S") {
+    		getPosBody().setX(XBody + 1);
+    		getPosTete().setX(XTete + 1);
+    	}
+    	else if (direction == "E") {
+    		getPosBody().setY(YBody - 1);
+    		getPosTete().setY(YTete - 1);
+		}
+    	else if (direction == "W") {
+    		getPosBody().setY(YBody + 1);
+    		getPosTete().setY(YTete + 1);
+		}
+    	goBackward();
     }
-
-    /* (non-Javadoc)
-     * @see fr.emac.gipsi.gsi.voyageur.AbstractVoyageur#left()
-     */
-    @Override
+    
+    
     protected void left() {
-        // TODO Auto-generated method stub
+        String direction = getDirection();
+        int XBody = getPosBody().getX();
+    	int YBody = getPosBody().getY();
+        if (direction == "N") {
+			setDirection("W");
+			getPosTete().setX(XBody - 1);
+			getPosTete().setY(YBody);
+		}
+        else if (direction == "S") {
+			getDirection().setDirection("E");
+			getPosTete().setX(XBody + 1);
+			getPosTete().setY(YBody);
+		}
+        else if (direction == "E") {
+        	setDirection("N");
+			getPosTete().setX(XBody);
+			getPosTete().setY(YBody + 1);
+		}
+        else if (direction == "W") {
+        	setDirection("S");
+			getPosTete().setX(XBody);
+			getPosTete().setY(YBody - 1);
+		}
+        turnLeft();
     }
-
-    /* (non-Javadoc)
-     * @see fr.emac.gipsi.gsi.voyageur.AbstractVoyageur#right()
-     */
-    @Override
+    
+    
     protected void right() {
-        // TODO Auto-generated method stub
+    	String direction = getDirection();
+        int XBody = getPosBody().getX();
+    	int YBody = getPosBody().getY();
+        if (direction == "N") {
+        	setDirection("E");
+			getPosTete().setX(XBody + 1);
+			getPosTete().setY(YBody);
+		}
+        else if (direction == "S") {
+			setDirection("W");
+			getPosTete().setX(XBody - 1);
+			getPosTete().setY(YBody);
+		}
+        else if (direction == "E") {
+        	setDirection("S");
+			getPosTete().setX(XBody);
+			getPosTete().setY(YBody - 1);
+		}
+        else if (direction == "W") {
+        	setDirection("N");
+			getPosTete().setX(XBody);
+			getPosTete().setY(YBody + 1);
+		}
+        turnRight();
     }
 }
