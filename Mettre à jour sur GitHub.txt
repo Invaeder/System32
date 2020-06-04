@@ -1,3 +1,13 @@
+**Pour mettre à jour sur GitHub : 
+Depuis la boite de commande, en étant dans le bon dossier taper :
+
 git add .
 git commit -m "Message"
 git push
+
+(Ce serait cool de changer le message pour connaitre la modif qui a été faite)
+
+**Pour mettre à jour sur votre PC : 
+Depuis la boite de commande, en étant dans le bon dossier taper :
+
+git pull
