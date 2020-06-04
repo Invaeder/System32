@@ -22,6 +22,14 @@ public class VoyageurSimuler extends AbstractVoyageur {
     @Override
     protected void forward() {
         // TODO Auto-generated method stub
+    	String direction = getDirection();
+    	if (direction == "N") {
+    		getPosBody().setX(getPosBody().getX() + 1);
+    		getPosTete().setX(getPosTete().getX() + 1);
+    		else if (direction == "S") {
+    			
+    		}
+    	goForward();
 
     }
 
