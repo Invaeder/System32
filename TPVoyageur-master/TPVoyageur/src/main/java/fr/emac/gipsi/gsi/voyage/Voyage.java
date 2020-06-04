@@ -55,7 +55,7 @@ public class Voyage extends AbstractVoyage {
      */
     @Override
     public void lancement() {
-        // TODO Auto-generated method stub
+        // TODO Auto-generated method stub (PAS A FAIRE)
 
     }
 
@@ -65,6 +65,7 @@ public class Voyage extends AbstractVoyage {
     @Override
     public void lancementSimuler() {
         // TODO Auto-generated method stub
+    	getSimulatedvoyageur().getPosTete().setX(2);
         afficheEcran();
     }
 }
