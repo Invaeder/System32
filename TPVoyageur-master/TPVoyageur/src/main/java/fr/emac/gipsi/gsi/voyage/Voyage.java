@@ -55,7 +55,7 @@ public class Voyage extends AbstractVoyage {
      */
     @Override
     public void lancement() {
-        // TODO Auto-generated method stub (PAS A FAIRE)
+        // PAS A FAIRE
 
     }
 
