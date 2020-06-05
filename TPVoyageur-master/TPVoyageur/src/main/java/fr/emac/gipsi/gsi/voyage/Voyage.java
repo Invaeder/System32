@@ -4,7 +4,7 @@ import fr.emac.gipsi.gsi.voyageur.AbstractVoyageur;
 
 import java.util.ArrayList;
 
- class Voyage extends AbstractVoyage {
+public class Voyage extends AbstractVoyage {
 
 
     public Voyage(ArrayList<Planete> listPlanete, AbstractVoyageur simulatedVoyageur) {
@@ -22,7 +22,8 @@ import java.util.ArrayList;
     @Override
     public int showFromPlanete(Planete p) {
         // affichage animation sur une planète (tout, roche, sol, photo)
-        return 0;
+        
+    	return 0;
     }
 
 
