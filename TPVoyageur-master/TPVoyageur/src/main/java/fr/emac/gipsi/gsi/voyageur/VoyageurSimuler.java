@@ -47,12 +47,12 @@ public class VoyageurSimuler extends AbstractVoyageur {
     	int XTete = getPosTete().getX();
     	int YTete = getPosTete().getY();
     	if (direction == "N") {
-    		getPosBody().setX(XBody - 1);
-    		getPosTete().setX(XTete - 1);
-    	}
-    	else if (direction == "S") {
     		getPosBody().setX(XBody + 1);
     		getPosTete().setX(XTete + 1);
+    	}
+    	else if (direction == "S") {
+    		getPosBody().setX(XBody - 1);
+    		getPosTete().setX(XTete - 1);
     	}
     	else if (direction == "E") {
     		getPosBody().setY(YBody - 1);
@@ -72,23 +72,23 @@ public class VoyageurSimuler extends AbstractVoyageur {
     	int YBody = getPosBody().getY();
         if (direction == "N") {
 			setDirection("W");
-			getPosTete().setX(XBody - 1);
-			getPosTete().setY(YBody);
+			getPosTete().setX(XBody);
+			getPosTete().setY(YBody - 1);
 		}
         else if (direction == "S") {
-			getDirection().setDirection("E");
-			getPosTete().setX(XBody + 1);
-			getPosTete().setY(YBody);
-		}
-        else if (direction == "E") {
-        	setDirection("N");
+			setDirection("E");
 			getPosTete().setX(XBody);
 			getPosTete().setY(YBody + 1);
 		}
+        else if (direction == "E") {
+        	setDirection("N");
+			getPosTete().setX(XBody - 1);
+			getPosTete().setY(YBody);
+		}
         else if (direction == "W") {
         	setDirection("S");
-			getPosTete().setX(XBody);
-			getPosTete().setY(YBody - 1);
+			getPosTete().setX(XBody + 1);
+			getPosTete().setY(YBody);
 		}
         turnLeft();
     }
@@ -100,23 +100,23 @@ public class VoyageurSimuler extends AbstractVoyageur {
     	int YBody = getPosBody().getY();
         if (direction == "N") {
         	setDirection("E");
-			getPosTete().setX(XBody + 1);
-			getPosTete().setY(YBody);
+        	getPosTete().setX(XBody);
+			getPosTete().setY(YBody + 1);
 		}
         else if (direction == "S") {
 			setDirection("W");
-			getPosTete().setX(XBody - 1);
-			getPosTete().setY(YBody);
-		}
-        else if (direction == "E") {
-        	setDirection("S");
 			getPosTete().setX(XBody);
 			getPosTete().setY(YBody - 1);
 		}
+        else if (direction == "E") {
+        	setDirection("S");
+        	getPosTete().setX(XBody + 1);
+			getPosTete().setY(YBody);
+		}
         else if (direction == "W") {
         	setDirection("N");
-			getPosTete().setX(XBody);
-			getPosTete().setY(YBody + 1);
+        	getPosTete().setX(XBody - 1);
+			getPosTete().setY(YBody);
 		}
         turnRight();
     }

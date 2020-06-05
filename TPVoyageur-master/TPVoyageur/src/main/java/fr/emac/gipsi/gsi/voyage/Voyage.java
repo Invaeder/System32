@@ -64,7 +64,7 @@ public class Voyage extends AbstractVoyage {
      */
     @Override
     public void lancementSimuler() {
-        // TODO Auto-generated method stub
+        // calcul chemin
     	getSimulatedvoyageur().getPosTete().setX(2);
         afficheEcran();
     }
