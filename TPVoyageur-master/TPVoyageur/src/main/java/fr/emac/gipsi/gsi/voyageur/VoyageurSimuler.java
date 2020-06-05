@@ -1,26 +1,15 @@
-/**
- *
- */
 package fr.emac.gipsi.gsi.voyageur;
 
-/**
- * @author Truptil Sebastien - sebastien.truptil@gmail.com
- *
- */
+
 public class VoyageurSimuler extends AbstractVoyageur {
 
-    /**
-     *
-     */
+
 	
 	
     public VoyageurSimuler() {
-        // ICI CALCUL DU CHEMIN
     }
 
-    /* (non-Javadoc)
-     * @see fr.emac.gipsi.gsi.voyageur.AbstractVoyageur#forward()
-     */
+
     @Override
     
     
