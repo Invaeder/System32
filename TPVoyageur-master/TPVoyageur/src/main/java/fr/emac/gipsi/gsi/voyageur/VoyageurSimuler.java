@@ -15,7 +15,7 @@ public class VoyageurSimuler extends AbstractVoyageur {
 	
 	
     public VoyageurSimuler() {
-        // TODO Auto-generated constructor stub
+        // ICI CALCUL DU CHEMIN
     }
 
     /* (non-Javadoc)
