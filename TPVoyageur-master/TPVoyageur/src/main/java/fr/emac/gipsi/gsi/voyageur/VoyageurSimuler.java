@@ -31,12 +31,12 @@ public class VoyageurSimuler extends AbstractVoyageur {
     	int XTete = getPosTete().getX();
     	int YTete = getPosTete().getY();
     	if (direction == "N") {
-    		getPosBody().setX(XBody + 1);
-    		getPosTete().setX(XTete + 1);
-    	}
-    	else if (direction == "S") {
     		getPosBody().setX(XBody - 1);
     		getPosTete().setX(XTete - 1);
+    	}
+    	else if (direction == "S") {
+    		getPosBody().setX(XBody + 1);
+    		getPosTete().setX(XTete + 1);
     	}
     	else if (direction == "E") {
     		getPosBody().setY(YBody + 1);
