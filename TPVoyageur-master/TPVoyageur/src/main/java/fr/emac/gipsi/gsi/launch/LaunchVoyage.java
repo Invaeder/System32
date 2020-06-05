@@ -14,7 +14,6 @@ public class LaunchVoyage {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 		
 		ArrayList<Planete> listPlanete = new ArrayList<>();
 		

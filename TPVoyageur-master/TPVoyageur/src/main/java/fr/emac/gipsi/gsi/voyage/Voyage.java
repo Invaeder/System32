@@ -9,26 +9,26 @@ import java.util.ArrayList;
 
     public Voyage(ArrayList<Planete> listPlanete, AbstractVoyageur simulatedVoyageur) {
         super(listPlanete, simulatedVoyageur);
-        // TODO Auto-generated constructor stub
+        // PAS A FAIRE
     }
 
 
     public Voyage(ArrayList<Planete> listPlanete, AbstractVoyageur simulatedVoyageur, AbstractVoyageur realVoyager) {
         super(listPlanete, simulatedVoyageur, realVoyager);
-        // TODO Auto-generated constructor stub
+        // PAS A FAIRE
     }
 
 
     @Override
     public int showFromPlanete(Planete p) {
-        // affichage animation sur une planète
+        // affichage animation sur une planète (tout, roche, sol, photo)
         return 0;
     }
 
 
     @Override
     public int showAll() {
-        // image en général?
+        // PAS A FAIRE
         return 0;
     }
 

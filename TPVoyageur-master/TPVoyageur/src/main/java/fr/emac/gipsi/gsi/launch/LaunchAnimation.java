@@ -1,5 +1,7 @@
 package fr.emac.gipsi.gsi.launch;
-
+/**
+ * 
+ */
 import fr.emac.gipsi.gsi.animation.AbstractAnimation;
 import fr.emac.gipsi.gsi.animation.AnimationByColumn;
 import fr.emac.gipsi.gsi.animation.AnimationFlash;
