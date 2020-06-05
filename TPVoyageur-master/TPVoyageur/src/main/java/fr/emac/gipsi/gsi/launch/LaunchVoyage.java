@@ -1,6 +1,3 @@
-/**
- * 
- */
 package fr.emac.gipsi.gsi.launch;
 
 import java.util.ArrayList;
@@ -11,15 +8,10 @@ import fr.emac.gipsi.gsi.voyage.Voyage;
 import fr.emac.gipsi.gsi.voyageur.AbstractVoyageur;
 import fr.emac.gipsi.gsi.voyageur.VoyageurSimuler;
 
-/**
- * @author Truptil Sebastien - sebastien.truptil@gmail.com
- *
- */
+
 public class LaunchVoyage {
 
-	/**
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

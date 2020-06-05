@@ -1,15 +1,10 @@
-/**
- * 
- */
+
 package fr.emac.gipsi.gsi.ecran;
 
 import fr.emac.gipsi.gsi.screen.Screen;
 import fr.emac.gipsi.gsi.screen.VisualRectangle;
 
-/**
- * @author Truptil Sebastien - sebastien.truptil@gmail.com
- *
- */
+
 public class ListScreen {
 
 	public static Screen first(){

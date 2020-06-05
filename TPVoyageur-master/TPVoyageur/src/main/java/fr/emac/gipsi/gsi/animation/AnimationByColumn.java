@@ -1,19 +1,11 @@
-/**
- * 
- */
 package fr.emac.gipsi.gsi.animation;
 
 import fr.emac.gipsi.gsi.screen.Screen;
 
-/**
- * @author truptil
- *
- */
+
 public class AnimationByColumn extends AbstractAnimation{
  
-	/**
-	 * 
-	 */
+
 	public AnimationByColumn() {
 		
 	}
