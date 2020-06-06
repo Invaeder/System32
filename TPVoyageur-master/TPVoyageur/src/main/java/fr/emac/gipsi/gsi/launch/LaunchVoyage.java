@@ -52,6 +52,8 @@ public class LaunchVoyage {
 		
 		Voyage voyage = new Voyage(listPlanete, simulatedVoyageur);
 
+		
+		
 		voyage.lancementSimuler();
 	}
 

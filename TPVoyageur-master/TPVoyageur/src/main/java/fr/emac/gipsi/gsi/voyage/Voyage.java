@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 public class Voyage extends AbstractVoyage {
 
+	private ArrayList<Planete> ordrePlaneteVoyage = new ArrayList<Planete>();
 
     public Voyage(ArrayList<Planete> listPlanete, AbstractVoyageur simulatedVoyageur) {
         super(listPlanete, simulatedVoyageur);
+        // ici appeler fonction algo calcul chemin moins énergivore qui va retourner list ordonnée des planètes pour la stocker dans ordrePlaneteVoyage
         // PAS A FAIRE
     }
 
@@ -43,7 +45,11 @@ public class Voyage extends AbstractVoyage {
 
     @Override
     public void lancementSimuler() {
-        // calcul chemin
+        /*
+         * for(Planete planete: ordrePlaneteVoyage){
+         * 
+         * }
+         */
     	getSimulatedvoyageur().getPosTete().setX(2);
         afficheEcran();
     }
