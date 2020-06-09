@@ -40,7 +40,95 @@ public class LaunchVoyage {
 		
 		listPlanete.add(p2);
 
+		Planete p3 = new Planete();
+		p3.setColorName("HotPink");
+		p3.getPos().setX(2);
+		p3.getPos().setY(12);
+		p3.setEchantillonRoche(ListScreen.second());
+		p3.setEchantillonSol(ListScreen.first());
 		
+		Planete p4 = new Planete();
+		p4.setColorName("HotPink");
+		p4.getPos().setX(7);
+		p4.getPos().setY(2);
+		p4.setEchantillonRoche(ListScreen.second());
+		p4.setEchantillonSol(ListScreen.first());
+		
+		Planete p5 = new Planete();
+		p5.setColorName("HotPink");
+		p5.getPos().setX(7);
+		p5.getPos().setY(7);
+		p5.setEchantillonRoche(ListScreen.second());
+		p5.setEchantillonSol(ListScreen.first());
+
+		listPlanete.add(p1);
+		listPlanete.add(p2);
+		listPlanete.add(p3);
+		listPlanete.add(p4);
+		listPlanete.add(p5);
+
+		
+		for(Planete p : listPlanete){
+			p.setRayon(0);
+		}
+		
+		while(listPlanete.size()>6){
+			listPlanete.remove(listPlanete.size()-1);
+		}
+		//position
+				int i=0;
+				listPlanete.get(i).getPos().setX(4);
+				listPlanete.get(i).getPos().setY(1);
+				listPlanete.get(i).setColorName("Magenta");
+					i++;
+				listPlanete.get(i).getPos().setX(6);
+				listPlanete.get(i).getPos().setY(4);
+				listPlanete.get(i).setColorName("PapayaWhip");
+				i++;
+				
+				listPlanete.get(i).getPos().setX(4);
+				listPlanete.get(i).getPos().setY(4);
+				listPlanete.get(i).setColorName("White");
+				i++;
+				listPlanete.get(i).getPos().setX(4);
+				listPlanete.get(i).getPos().setY(7);
+				listPlanete.get(i).setColorName("Red");
+				i++;
+				listPlanete.get(i).getPos().setX(4);
+				listPlanete.get(i).getPos().setY(10);
+				listPlanete.get(i).setColorName("Green");
+				i++;
+				listPlanete.get(i).getPos().setX(2);
+				listPlanete.get(i).getPos().setY(7);
+				listPlanete.get(i).setColorName("MediumVioletRed");
+				i++;
+
+				for(Planete p : listPlanete){
+					for(Planete subP : listPlanete){
+						if(!p.equals(subP)){
+							p.getListAccessibilite().add(subP);
+						}
+					}
+				}
+				
+				//on enleve afin de faire la constellation
+				listPlanete.get(1).getListAccessibilite().remove(listPlanete.get(0));
+				listPlanete.get(1).getListAccessibilite().remove(listPlanete.get(3));
+				listPlanete.get(1).getListAccessibilite().remove(listPlanete.get(4));
+				listPlanete.get(1).getListAccessibilite().remove(listPlanete.get(5));
+				
+				listPlanete.get(5).getListAccessibilite().remove(listPlanete.get(0));
+				listPlanete.get(5).getListAccessibilite().remove(listPlanete.get(1));
+				listPlanete.get(5).getListAccessibilite().remove(listPlanete.get(4));
+				listPlanete.get(5).getListAccessibilite().remove(listPlanete.get(2));
+		
+
+		
+		
+		
+
+		
+
 		
 		AbstractVoyageur simulatedVoyageur = new VoyageurSimuler();
 		
