@@ -8,7 +8,7 @@ import fr.emac.gipsi.gsi.voyage.Voyage;
 import fr.emac.gipsi.gsi.voyageur.AbstractVoyageur;
 import fr.emac.gipsi.gsi.voyageur.VoyageurSimuler;
 
-
+//COCO tu casses les couilles à ne pas savoir utiliser ton ordi.
 public class LaunchVoyage {
 
 
