@@ -47,11 +47,11 @@ public class Voyage extends AbstractVoyage {
 			int yRover = getSimulatedvoyageur().getPosBody().getY();
 			int xPlanete = planete.getPos().getX();
 			int yPlanete = planete.getPos().getY();
-			if (xRover != xPlanete && yRover != yPlanete) {
+			if (xRover != xPlanete || yRover != yPlanete) {
 				int xDistance = xPlanete - xRover;
 				int yDistance = yPlanete - yRover;
 				String direction = getSimulatedvoyageur().getDirection();
-				while (xDistance != 0 && yDistance != 0) {
+				while (xDistance != 0 || yDistance != 0) {
 					if (direction == "N") {
 						if (xDistance > 0) {
 							while (xDistance != 0) {
