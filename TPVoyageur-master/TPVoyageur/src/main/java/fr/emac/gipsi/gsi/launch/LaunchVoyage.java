@@ -29,7 +29,7 @@ public class LaunchVoyage {
 		listPlanete.add(p1);
 		
 		Planete p2 = new Planete();
-		p2.setColorName("DeepPink");
+		p2.setColorName("DeepSkyBlue");
 		p2.setImage(ListScreen.first());
 		p2.setEchantillonRoche(ListScreen.second());
 		p2.setEchantillonSol(ListScreen.first());
