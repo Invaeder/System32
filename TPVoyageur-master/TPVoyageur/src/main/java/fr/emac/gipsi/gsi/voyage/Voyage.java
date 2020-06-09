@@ -3,6 +3,7 @@ package fr.emac.gipsi.gsi.voyage;
 import fr.emac.gipsi.gsi.voyageur.AbstractVoyageur;
 
 import java.util.ArrayList;
+import java.util.prefs.BackingStoreException;
 
 public class Voyage extends AbstractVoyage {
 
@@ -44,12 +45,27 @@ public class Voyage extends AbstractVoyage {
 
     @Override
     public void lancementSimuler() {
-        /*
-         * for(Planete planete: ordrePlaneteVoyage){
-         * 
-         * }
-         */
-    	getSimulatedvoyageur().getPosTete().setX(2);
+        
+    	for(Planete planete: ordrePlaneteVoyage){
+    		int xRover = getSimulatedvoyageur().getPosBody().getX();
+    		int yRover = getSimulatedvoyageur().getPosBody().getY();
+    		int xPlanete = planete.getPos().getX();
+    		int yPlanete = planete.getPos().getY();
+    		if (xRover != xPlanete && yRover != yPlanete) {
+				int xDistance = xPlanete-xRover;
+				int yDistance = yPlanete-yRover;
+				String direction = getSimulatedvoyageur().getDirection();
+				if (direction == "N") {
+					if (xDistance > 0) {
+						while (xDistance != 0) {
+							getSimulatedvoyageur().
+						}
+					}
+				}
+			} 
+    		
+    	}
+        
         afficheEcran();
     }
 }

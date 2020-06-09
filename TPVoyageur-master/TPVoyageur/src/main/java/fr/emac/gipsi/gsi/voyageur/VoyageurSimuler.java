@@ -35,8 +35,6 @@ public class VoyageurSimuler extends AbstractVoyageur {
     		getPosBody().setY(yBody - 1);
     		getPosTete().setY(yTete - 1);
 		}
-    	goForward();
-
     }
 
     
@@ -62,7 +60,6 @@ public class VoyageurSimuler extends AbstractVoyageur {
     		getPosBody().setY(yBody + 1);
     		getPosTete().setY(yTete + 1);
 		}
-    	goBackward();
     }
     
     
@@ -90,7 +87,6 @@ public class VoyageurSimuler extends AbstractVoyageur {
 			getPosTete().setX(xBody + 1);
 			getPosTete().setY(yBody);
 		}
-        turnLeft();
     }
     
     
@@ -118,6 +114,5 @@ public class VoyageurSimuler extends AbstractVoyageur {
         	getPosTete().setX(xBody - 1);
 			getPosTete().setY(yBody);
 		}
-        turnRight();
     }
 }
