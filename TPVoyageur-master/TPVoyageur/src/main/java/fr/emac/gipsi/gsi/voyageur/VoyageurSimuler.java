@@ -19,7 +19,6 @@ public class VoyageurSimuler extends AbstractVoyageur {
     	int yBody = getPosBody().getY();
     	int xTete = getPosTete().getX();
     	int yTete = getPosTete().getY();
-    	String doingSomethingStupid = "Coucou";
     	if (direction == "N") {
     		getPosBody().setX(xBody - 1);
     		getPosTete().setX(xTete - 1);
