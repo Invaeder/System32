@@ -1,5 +1,8 @@
 package fr.emac.gipsi.gsi.voyage;
 
+import fr.emac.gipsi.gsi.animation.AbstractAnimation;
+import fr.emac.gipsi.gsi.animation.AnimationFlash;
+import fr.emac.gipsi.gsi.ecran.ListScreen;
 import fr.emac.gipsi.gsi.voyageur.AbstractVoyageur;
 
 import java.util.ArrayList;
@@ -91,10 +94,14 @@ public class Voyage extends AbstractVoyage {
 							while (xDistance != 0) {
 								getSimulatedvoyageur().goBackward();
 								xDistance = xPlanete - getSimulatedvoyageur().getPosBody().getX();
+								afficheEcran();
+								wait(300);
 							}
 						}
 						if (yDistance != 0) {
 							getSimulatedvoyageur().turnLeft();
+							afficheEcran();
+							wait(300);
 						}
 					}
 					if (direction == "E") {
@@ -102,15 +109,21 @@ public class Voyage extends AbstractVoyage {
 							while (yDistance != 0) {
 								getSimulatedvoyageur().goForward();
 								yDistance = yPlanete - getSimulatedvoyageur().getPosBody().getY();
+								afficheEcran();
+								wait(300);
 							}
 						} else {
 							while (yDistance != 0) {
 								getSimulatedvoyageur().goBackward();
 								yDistance = yPlanete - getSimulatedvoyageur().getPosBody().getY();
+								afficheEcran();
+								wait(300);
 							}
 						}
 						if (yDistance != 0) {
 							getSimulatedvoyageur().turnLeft();
+							afficheEcran();
+							wait(300);
 						}
 					}
 					if (direction == "W") {
@@ -118,21 +131,44 @@ public class Voyage extends AbstractVoyage {
 							while (yDistance != 0) {
 								getSimulatedvoyageur().goBackward();
 								yDistance = yPlanete - getSimulatedvoyageur().getPosBody().getY();
+								afficheEcran();
+								wait(300);
 							}
 						} else {
 							while (yDistance != 0) {
 								getSimulatedvoyageur().goForward();
 								yDistance = yPlanete - getSimulatedvoyageur().getPosBody().getY();
+								afficheEcran();
+								wait(300);
 							}
 						}
 						if (yDistance != 0) {
 							getSimulatedvoyageur().turnLeft();
+							afficheEcran();
+							wait(300);
 						}
 					}
 				}
-				//Sortie du if (donc sur la planète)
+
 			}
-			//Sortie de la boucle for après
+			// Ici on est sorti du "if", on est donc sur une planète (inch'Allah)
+			
+			if (planete.getEchantillonRoche() != null) {
+				// /!\ Il faut rajouter le cas où on a déjà l'échantillon dans le if !!!!
+				getSimulatedvoyageur().takeEchantillonRoche(planete);
+				AbstractAnimation roche = new AnimationFlash();
+				roche.setEcranDeb(planete.getImage());
+				roche.setEcranFin(planete.getEchantillonRoche());
+				wait(1000);
+				AbstractAnimation retourPlaneteDeRoche = new AnimationFlash();
+				retourPlaneteDeRoche.setEcranDeb(planete.getEchantillonRoche());
+				retourPlaneteDeRoche.setEcranFin(planete.getImage());
+			}
+
+			
 		}
+		// Ici on est sortie de la boucle "for", si tout va bien on a : tous les
+		// échantillons et toutes les photos.
+
 	}
 }
