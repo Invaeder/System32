@@ -44,12 +44,14 @@ public class Voyage extends AbstractVoyage {
 
 	@Override
 	public void lancementSimuler() {
+		afficheEcran();
 		calculduchemin();
 		for (Planete planete : ordrePlaneteVoyage) {
 			int xRover = getSimulatedvoyageur().getPosBody().getX();
 			int yRover = getSimulatedvoyageur().getPosBody().getY();
 			int xPlanete = planete.getPos().getX();
 			int yPlanete = planete.getPos().getY();
+			wait(300);
 			if (xRover != xPlanete || yRover != yPlanete) {
 				int xDistance = xPlanete - xRover;
 				int yDistance = yPlanete - yRover;
@@ -60,15 +62,21 @@ public class Voyage extends AbstractVoyage {
 							while (xDistance != 0) {
 								getSimulatedvoyageur().goBackward();
 								xDistance = xPlanete - getSimulatedvoyageur().getPosBody().getX();
+								afficheEcran();
+								wait(300);
 							}
 						} else {
 							while (xDistance != 0) {
 								getSimulatedvoyageur().goForward();
 								xDistance = xPlanete - getSimulatedvoyageur().getPosBody().getX();
+								afficheEcran();
+								wait(300);
 							}
 						}
 						if (yDistance != 0) {
 							getSimulatedvoyageur().turnLeft();
+							afficheEcran();
+							wait(300);
 						}
 					}
 					if (direction == "S") {
@@ -76,6 +84,8 @@ public class Voyage extends AbstractVoyage {
 							while (xDistance != 0) {
 								getSimulatedvoyageur().goForward();
 								xDistance = xPlanete - getSimulatedvoyageur().getPosBody().getX();
+								afficheEcran();
+								wait(300);
 							}
 						} else {
 							while (xDistance != 0) {
@@ -120,9 +130,9 @@ public class Voyage extends AbstractVoyage {
 						}
 					}
 				}
+				//Sortie du if (donc sur la planète)
 			}
+			//Sortie de la boucle for après
 		}
-
-		afficheEcran();
 	}
 }
