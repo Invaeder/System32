@@ -11,8 +11,7 @@ public class Voyage extends AbstractVoyage {
 
 	public Voyage(ArrayList<Planete> listPlanete, AbstractVoyageur simulatedVoyageur) {
 		super(listPlanete, simulatedVoyageur);
-		// ici appeler fonction algo calcul chemin moins énergivore qui va retourner
-		// list ordonnée des planètes pour la stocker dans ordrePlaneteVoyage
+		// Pas à faire
 	}
 
 	public Voyage(ArrayList<Planete> listPlanete, AbstractVoyageur simulatedVoyageur, AbstractVoyageur realVoyager) {
@@ -39,9 +38,13 @@ public class Voyage extends AbstractVoyage {
 
 	}
 
+	public void calculduchemin() {
+		// algorythme de odrePlaneteVoyage
+	}
+
 	@Override
 	public void lancementSimuler() {
-
+		calculduchemin();
 		for (Planete planete : ordrePlaneteVoyage) {
 			int xRover = getSimulatedvoyageur().getPosBody().getX();
 			int yRover = getSimulatedvoyageur().getPosBody().getY();
