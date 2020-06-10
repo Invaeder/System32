@@ -79,7 +79,7 @@ public class LaunchVoyage {
 		listPlanete.get(i).getPos().setY(1);
 		listPlanete.get(i).setColorName("Magenta");
 		i++;
-		
+
 		listPlanete.get(i).getPos().setX(6);
 		listPlanete.get(i).getPos().setY(4);
 		listPlanete.get(i).setColorName("PapayaWhip");
@@ -89,7 +89,7 @@ public class LaunchVoyage {
 		listPlanete.get(i).getPos().setY(4);
 		listPlanete.get(i).setColorName("White");
 		i++;
-		
+
 		listPlanete.get(i).getPos().setX(4);
 		listPlanete.get(i).getPos().setY(7);
 		listPlanete.get(i).setColorName("Red");
@@ -98,7 +98,7 @@ public class LaunchVoyage {
 		listPlanete.get(i).getPos().setY(10);
 		listPlanete.get(i).setColorName("Green");
 		i++;
-		
+
 		listPlanete.get(i).getPos().setX(2);
 		listPlanete.get(i).getPos().setY(7);
 		listPlanete.get(i).setColorName("MediumVioletRed");
