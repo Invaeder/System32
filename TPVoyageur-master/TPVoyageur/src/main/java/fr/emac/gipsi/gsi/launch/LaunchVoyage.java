@@ -126,9 +126,9 @@ public class LaunchVoyage {
 		AbstractVoyageur simulatedVoyageur = new VoyageurSimuler();
 
 		simulatedVoyageur.getPosTete().setX(listPlanete.get(0).getPos().getX());
-		simulatedVoyageur.getPosTete().setY(listPlanete.get(0).getPos().getY());
+		simulatedVoyageur.getPosTete().setY(listPlanete.get(0).getPos().getY() + 1);
 		simulatedVoyageur.getPosBody().setX(listPlanete.get(0).getPos().getX());
-		simulatedVoyageur.getPosBody().setY(listPlanete.get(0).getPos().getY() - 1);
+		simulatedVoyageur.getPosBody().setY(listPlanete.get(0).getPos().getY());
 		simulatedVoyageur.setDirection("E");
 
 		Voyage voyage = new Voyage(listPlanete, simulatedVoyageur);
