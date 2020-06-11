@@ -4,6 +4,7 @@ import fr.emac.gipsi.gsi.animation.AbstractAnimation;
 import fr.emac.gipsi.gsi.animation.AnimationFlash;
 import fr.emac.gipsi.gsi.ecran.ListScreen;
 import fr.emac.gipsi.gsi.voyageur.AbstractVoyageur;
+import fr.emac.gipsi.gsi.voyageur.VoyageurSimuler;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -155,7 +156,9 @@ public class Voyage extends AbstractVoyage {
 
 			}
 			// Ici on est sorti du "if", on est donc sur une planète (inch'Allah)
-
+			if (!getSimulatedvoyageur().getListPhotographie().contains(planete.getImage())) {
+				getSimulatedvoyageur().takePicture(planete);
+			}
 			if (planete.getEchantillonRoche() != null && !planeteVisitée.contains(planete)) {
 				// /!\ Il faut rajouter le cas où on a déjà l'échantillon dans le if !!!!
 				getSimulatedvoyageur().takeEchantillonRoche(planete);
