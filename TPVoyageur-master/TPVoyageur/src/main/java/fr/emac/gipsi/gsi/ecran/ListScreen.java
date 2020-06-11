@@ -182,7 +182,6 @@ public class ListScreen {
 		return second;
 	}
 
-}
 
 	public static Screen landscapeP1() { // Arrakis
 		Screen landscapeP1 = new Screen("landscapeP1");

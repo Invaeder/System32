@@ -6,6 +6,7 @@ import fr.emac.gipsi.gsi.ecran.ListScreen;
 import fr.emac.gipsi.gsi.voyageur.AbstractVoyageur;
 import fr.emac.gipsi.gsi.voyageur.VoyageurSimuler;
 
+import java.awt.List;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.prefs.BackingStoreException;
@@ -40,11 +41,89 @@ public class Voyage extends AbstractVoyage {
 	@Override
 	public void lancement() {
 		// PAS A FAIRE
+	}
 
+	private int distance = -1;
+
+	public void calculDistance(Planete p1, Planete p2) {
+		if (p1.getListVisibilite().contains(p2)) {
+			int xp1 = p1.getPos().getX();
+			int yp1 = p1.getPos().getY();
+			int xp2 = p2.getPos().getX();
+			int yp2 = p2.getPos().getY();
+			distance = Math.abs(xp1 - xp2) + Math.abs(yp1 - yp2);
+		} else {
+			distance = -1;
+		}
 	}
 
 	public void calculduchemin() {
 		// algorythme de odrePlaneteVoyage
+
+		// Détermination de la planète de départ
+		boolean again = true;
+		int i = 0;
+		int xRover = getSimulatedvoyageur().getPosBody().getX();
+		int yRover = getSimulatedvoyageur().getPosBody().getY();
+		Planete planeteDép = new Planete();
+		while (again) {
+			planeteDép = listPlanete.get(i);
+			if (xRover == planeteDép.getPos().getX() && yRover == planeteDép.getPos().getY()) {
+				ordrePlaneteVoyage.add(planeteDép);
+				again = false;
+			}
+			i++;
+		}
+
+		// Création de la liste des planètes visitables :
+		ArrayList<Planete> planetesVisitables = new ArrayList<Planete>();
+		planetesVisitables.add(planeteDép);
+		for (Planete pi : listPlanete) {
+			if (pi.getEchantillonSol() != null && !planetesVisitables.contains(pi)) {
+				planetesVisitables.add(pi);
+			}
+		}
+
+		// Création de la matrice des distances entre les planètes visitables :
+		ArrayList<ArrayList<Integer>> mDistance = new ArrayList<ArrayList<Integer>>();
+		// mDistance.get(i).set(j, valeur);
+		i = 0;
+		for (Planete pLig : planetesVisitables) {
+			for (Planete pCol : planetesVisitables) {
+				calculDistance(pLig, pCol);
+				mDistance.get(i).add(distance);
+			}
+			i++;
+		}
+
+		// Calcul de tous les chemins :
+		ArrayList<Planete> planetesVisitées = new ArrayList<Planete>();
+		planetesVisitées.add(planeteDép);
+		Planete dernièrePlanete = planeteDép;
+		ArrayList<Planete> culDeSac = new ArrayList<Planete>();
+		for (Planete planete : listPlanete) {
+			if (planete.getListAccessibilite().size() == 1) {
+				culDeSac.add(planete);
+			}
+		}
+		ArrayList<ArrayList<Planete>> mChemins = new ArrayList<ArrayList<Planete>>();
+		int i = 0;
+		int j = 0;
+		for (Planete p1 : dernièrePlanete.getListAccessibilite()) {
+			
+			for (Planete p2 : p1.getListAccessibilite()) {
+				while (planetesVisitées.size() != planetesVisitables.size()) {
+					planetesVisitées.add(dernièrePlanete);
+					if (culDeSac.contains(p2)) {
+						planetesVisitées.add(p2);
+						
+					}
+				}
+				j++;
+			}
+			dernièrePlanete = 
+			i++;
+		}
 	}
 
 	@Override
@@ -52,7 +131,7 @@ public class Voyage extends AbstractVoyage {
 		afficheEcran();
 		calculduchemin();
 		ArrayList<Planete> planeteVisitée = new ArrayList<Planete>();
-		// planeteVisitée.add(ordrePlaneteVoyage(0));
+		planeteVisitée.add(ordrePlaneteVoyage.get(0));
 		for (Planete planete : ordrePlaneteVoyage) {
 			int xRover = getSimulatedvoyageur().getPosBody().getX();
 			int yRover = getSimulatedvoyageur().getPosBody().getY();
