@@ -5,6 +5,7 @@ import fr.emac.gipsi.gsi.animation.AnimationFlash;
 import fr.emac.gipsi.gsi.ecran.ListScreen;
 import fr.emac.gipsi.gsi.voyageur.AbstractVoyageur;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.prefs.BackingStoreException;
 
@@ -49,6 +50,8 @@ public class Voyage extends AbstractVoyage {
 	public void lancementSimuler() {
 		afficheEcran();
 		calculduchemin();
+		ArrayList<Planete> planeteVisitée = new ArrayList<Planete>();
+		// planeteVisitée.add(ordrePlaneteVoyage(0));
 		for (Planete planete : ordrePlaneteVoyage) {
 			int xRover = getSimulatedvoyageur().getPosBody().getX();
 			int yRover = getSimulatedvoyageur().getPosBody().getY();
@@ -152,8 +155,8 @@ public class Voyage extends AbstractVoyage {
 
 			}
 			// Ici on est sorti du "if", on est donc sur une planète (inch'Allah)
-			
-			if (planete.getEchantillonRoche() != null) {
+
+			if (planete.getEchantillonRoche() != null && !planeteVisitée.contains(planete)) {
 				// /!\ Il faut rajouter le cas où on a déjà l'échantillon dans le if !!!!
 				getSimulatedvoyageur().takeEchantillonRoche(planete);
 				AbstractAnimation roche = new AnimationFlash();
@@ -164,11 +167,19 @@ public class Voyage extends AbstractVoyage {
 				retourPlaneteDeRoche.setEcranDeb(planete.getEchantillonRoche());
 				retourPlaneteDeRoche.setEcranFin(planete.getImage());
 			}
-
-			
+			if (planete.getEchantillonSol() != null && !planeteVisitée.contains(planete)) {
+				// /!\ Il faut rajouter le cas où on a déjà l'échantillon dans le if !!!!
+				getSimulatedvoyageur().takeEchantillonSol(planete);
+				AbstractAnimation sol = new AnimationFlash();
+				sol.setEcranDeb(planete.getImage());
+				sol.setEcranFin(planete.getEchantillonSol());
+				wait(1000);
+				AbstractAnimation retourPlaneteDeSol = new AnimationFlash();
+				retourPlaneteDeSol.setEcranDeb(planete.getEchantillonSol());
+				retourPlaneteDeSol.setEcranFin(planete.getImage());
+			}
 		}
-		// Ici on est sortie de la boucle "for", si tout va bien on a : tous les
+		// Ici on est sortie de la boucle "for", si tout va bien on a tous les
 		// échantillons et toutes les photos.
-
 	}
 }
