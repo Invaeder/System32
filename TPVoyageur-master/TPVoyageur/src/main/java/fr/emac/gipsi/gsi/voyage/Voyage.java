@@ -95,35 +95,74 @@ public class Voyage extends AbstractVoyage {
 			}
 			i++;
 		}
-
-		// Calcul de tous les chemins :
 		ArrayList<Planete> planetesVisitées = new ArrayList<Planete>();
 		planetesVisitées.add(planeteDép);
-		Planete dernièrePlanete = planeteDép;
+		// Planete dernièrePlanete = planeteDép;
 		ArrayList<Planete> culDeSac = new ArrayList<Planete>();
 		for (Planete planete : listPlanete) {
 			if (planete.getListAccessibilite().size() == 1) {
 				culDeSac.add(planete);
 			}
 		}
-		ArrayList<ArrayList<Planete>> mChemins = new ArrayList<ArrayList<Planete>>();
-		int i = 0;
-		int j = 0;
-		for (Planete p1 : dernièrePlanete.getListAccessibilite()) {
-			
-			for (Planete p2 : p1.getListAccessibilite()) {
-				while (planetesVisitées.size() != planetesVisitables.size()) {
-					planetesVisitées.add(dernièrePlanete);
-					if (culDeSac.contains(p2)) {
-						planetesVisitées.add(p2);
-						
-					}
+		Planete pActuelle = planeteDép;
+		ordrePlaneteVoyage.add(planeteDép);
+		ArrayList<Integer> listDistancesActuelles = new ArrayList<>();
+		while (planetesVisitables.size() != planetesVisitées.size()) {
+			ArrayList<Planete> listAccesActuel = pActuelle.getListAccessibilite();
+			for (Planete planete : listAccesActuel) {
+				if (culDeSac.contains(planete)) {
+					ordrePlaneteVoyage.add(planete);
+					ordrePlaneteVoyage.add(pActuelle);
+					planetesVisitées.add(planete);
 				}
-				j++;
+				calculDistance(pActuelle, planete);
+				listDistancesActuelles.add(distance);
 			}
-			dernièrePlanete = 
-			i++;
+			int minDist = listDistancesActuelles.get(0);
+			int indice = 0;
+			for (int j = 0; j < listAccesActuel.size(); j++) {
+				if (!culDeSac.contains(listAccesActuel.get(j))) {
+					indice = j;
+				}
+			}
+			for (int i = 1; i < listDistancesActuelles.size(); i++) {
+				int dist = listDistancesActuelles.get(i);
+				if (dist < minDist && !planetesVisitées.contains(listAccesActuel.get(i))) {
+					minDist = dist;
+					indice = i;
+				}
+			}
+			ordrePlaneteVoyage.add(listAccesActuel.get(indice));
+			planetesVisitées.add(listAccesActuel.get(indice));
+			pActuelle = listAccesActuel.get(indice);
 		}
+
+		/*
+		 * ArrayList<ArrayList<Planete>> mPlanete = new ArrayList<ArrayList<Planete>>();
+		 * i = 0; for (Planete p1 : planetesVisitables) { for (Planete p2 :
+		 * planetesVisitables) { if (p1 != p2 && p1.getListAccessibilite().contains(p2))
+		 * { mPlanete.get(i).add(p1); mPlanete.get(i).add(p2); } } i++; } int m =
+		 * mPlanete.size(); ArrayList<ArrayList<Planete>> mChemins = new
+		 * ArrayList<ArrayList<Planete>>(); for (int k = 0; k < m; k++) { if
+		 * (mPlanete.get(i).get(0) == planeteDép) { while (planetesVisitables.size() !=
+		 * planetesVisitées.size()) { for (int j = 0; j < m; j++) { if
+		 * (planetesVisitées.get(-1) == mPlanete.get(j).get(0) && ) {
+		 * 
+		 * } } } } }
+		 */
+
+		/*
+		 * ArrayList<ArrayList<Planete>> mChemins = new ArrayList<ArrayList<Planete>>();
+		 * int i = 0;
+		 *
+		 * int j = 0; for (Planete p1 : dernièrePlanete.getListAccessibilite()) {
+		 * 
+		 * for (Planete p2 : p1.getListAccessibilite()) { while (planetesVisitées.size()
+		 * != planetesVisitables.size()) { planetesVisitées.add(dernièrePlanete); if
+		 * (culDeSac.contains(p2)) { planetesVisitées.add(p2);
+		 * 
+		 * } } j++; } dernièrePlanete = i++; }
+		 */
 	}
 
 	@Override
