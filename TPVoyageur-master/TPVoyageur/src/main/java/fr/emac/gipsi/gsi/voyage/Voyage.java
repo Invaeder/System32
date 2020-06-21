@@ -57,6 +57,9 @@ public class Voyage extends AbstractVoyage {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public void calculduchemin() {
 		// algorythme de odrePlaneteVoyage
 
@@ -85,16 +88,14 @@ public class Voyage extends AbstractVoyage {
 		}
 
 		// Création de la matrice des distances entre les planètes visitables :
-		ArrayList<ArrayList<Integer>> mDistance = new ArrayList<ArrayList<Integer>>();
-		// mDistance.get(i).set(j, valeur);
-		i = 0;
-		for (Planete pLig : planetesVisitables) {
-			for (Planete pCol : planetesVisitables) {
-				calculDistance(pLig, pCol);
-				mDistance.get(i).add(distance);
-			}
-			i++;
-		}
+		// inutile du coup...
+		/*
+		 * ArrayList<ArrayList<Integer>> mDistance = new
+		 * ArrayList<ArrayList<Integer>>(); // mDistance.get(i).set(j, valeur); i = 0;
+		 * for (Planete pLig : planetesVisitables) { for (Planete pCol :
+		 * planetesVisitables) { calculDistance(pLig, pCol);
+		 * mDistance.get(i).add(distance); } i++; }
+		 */
 		ArrayList<Planete> planetesVisitées = new ArrayList<Planete>();
 		planetesVisitées.add(planeteDép);
 		// Planete dernièrePlanete = planeteDép;
