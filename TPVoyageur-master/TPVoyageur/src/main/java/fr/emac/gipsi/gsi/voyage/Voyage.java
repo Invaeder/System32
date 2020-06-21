@@ -170,7 +170,6 @@ public class Voyage extends AbstractVoyage {
 		afficheEcran();
 		calculduchemin();
 		ArrayList<Planete> planeteVisitée = new ArrayList<Planete>();
-		planeteVisitée.add(ordrePlaneteVoyage.get(0));
 		for (Planete planete : ordrePlaneteVoyage) {
 			int xRover = getSimulatedvoyageur().getPosBody().getX();
 			int yRover = getSimulatedvoyageur().getPosBody().getY();
@@ -298,6 +297,9 @@ public class Voyage extends AbstractVoyage {
 				AbstractAnimation retourPlaneteDeSol = new AnimationFlash();
 				retourPlaneteDeSol.setEcranDeb(planete.getEchantillonSol());
 				retourPlaneteDeSol.setEcranFin(planete.getImage());
+			}
+			if (!planeteVisitée.contains(planete)) {
+				planeteVisitée.add(planete);
 			}
 		}
 		// Ici on est sortie de la boucle "for", si tout va bien on a tous les
