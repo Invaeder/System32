@@ -126,11 +126,11 @@ public class Voyage extends AbstractVoyage {
 					indice = j;
 				}
 			}
-			for (int i = 1; i < listDistancesActuelles.size(); i++) {
-				int dist = listDistancesActuelles.get(i);
-				if (dist < minDist && !planetesVisitées.contains(listAccesActuel.get(i))) {
+			for (int k = 1; k < listDistancesActuelles.size(); k++) {
+				int dist = listDistancesActuelles.get(k);
+				if (dist < minDist && !planetesVisitées.contains(listAccesActuel.get(k))) {
 					minDist = dist;
-					indice = i;
+					indice = k;
 				}
 			}
 			ordrePlaneteVoyage.add(listAccesActuel.get(indice));
@@ -277,7 +277,8 @@ public class Voyage extends AbstractVoyage {
 			if (!getSimulatedvoyageur().getListPhotographie().contains(planete.getImage())) {
 				getSimulatedvoyageur().takePicture(planete);
 			}
-			if (planete.getEchantillonRoche() != null && !planeteVisitée.contains(planete) && !getSimulatedvoyageur().getListEchantillonRoche().contains(planete.getEchantillonRoche())) {
+			if (planete.getEchantillonRoche() != null && !planeteVisitée.contains(planete)
+					&& !getSimulatedvoyageur().getListEchantillonRoche().contains(planete.getEchantillonRoche())) {
 				getSimulatedvoyageur().takeEchantillonRoche(planete);
 				AbstractAnimation roche = new AnimationFlash();
 				roche.setEcranDeb(planete.getImage());
@@ -287,7 +288,8 @@ public class Voyage extends AbstractVoyage {
 				retourPlaneteDeRoche.setEcranDeb(planete.getEchantillonRoche());
 				retourPlaneteDeRoche.setEcranFin(planete.getImage());
 			}
-			if (planete.getEchantillonSol() != null && !planeteVisitée.contains(planete) && !getSimulatedvoyageur().getListEchantillonSol().contains(planete.getEchantillonSol())) {
+			if (planete.getEchantillonSol() != null && !planeteVisitée.contains(planete)
+					&& !getSimulatedvoyageur().getListEchantillonSol().contains(planete.getEchantillonSol())) {
 				getSimulatedvoyageur().takeEchantillonSol(planete);
 				AbstractAnimation sol = new AnimationFlash();
 				sol.setEcranDeb(planete.getImage());
