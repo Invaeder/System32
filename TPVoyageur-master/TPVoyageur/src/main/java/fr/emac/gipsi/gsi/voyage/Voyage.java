@@ -310,6 +310,28 @@ public class Voyage extends AbstractVoyage {
 			if (!planeteVisitée.contains(planete)) {
 				planeteVisitée.add(planete);
 			}
+			for (Planete planetegaz : planete.getListVisibilite()) {
+				int xPlanetegaz = planetegaz.getPos().getX();
+				int yPlanetegaz = planetegaz.getPos().getY();
+				if (planetegaz.getEchantillonSol() == null && getSimulatedvoyageur().getListPhotographie().contains(planetegaz.getImage())) {
+					if (xPlanetegaz-xRover == 0) {
+						if (yPlanetegaz-yRover > 0) {
+							if (direction == 'E') {
+								getSimulatedvoyageur().turnRight();
+							} else { while (direction != 'S') {
+								getSimulatedvoyageur().turnLeft;
+							  }
+						}
+					} else { if (xPlanetegaz-xRover > 0) {
+									if (direction == 'S') {
+										getSimulatedvoyageur().turnRight;
+									} else { while (direction != 'E') {
+											 	getSimulatedvoyageur().turnLeft;
+											 }
+									  }
+					  }
+				}
+			}
 		}
 		// Ici on est sortie de la boucle "for", si tout va bien on a tous les
 		// échantillons et toutes les photos.
