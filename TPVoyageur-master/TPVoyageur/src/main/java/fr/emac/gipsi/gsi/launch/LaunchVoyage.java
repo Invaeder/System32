@@ -17,7 +17,7 @@ public class LaunchVoyage {
 
 		Planete p1 = new Planete();
 		p1.setColorName("DarkSalmon");
-		p1.setImage(ListScreen.first());
+		p1.setImage(ListScreen.landscapeP1());
 		p1.setEchantillonRoche(ListScreen.second());
 		p1.setEchantillonSol(ListScreen.first());
 		p1.setRayon(1);
@@ -28,7 +28,7 @@ public class LaunchVoyage {
 
 		Planete p2 = new Planete();
 		p2.setColorName("DeepSkyBlue");
-		p2.setImage(ListScreen.first());
+		p2.setImage(ListScreen.landscapeP2());
 		p2.setEchantillonRoche(ListScreen.second());
 		p2.setEchantillonSol(ListScreen.first());
 		p2.setRayon(1);

@@ -182,6 +182,7 @@ public class Voyage extends AbstractVoyage {
 				int yDistance = yPlanete - yRover;
 				String direction = getSimulatedvoyageur().getDirection();
 				while (xDistance != 0 || yDistance != 0) {
+					direction = getSimulatedvoyageur().getDirection();
 					if (direction == "N") {
 						if (xDistance > 0) {
 							while (xDistance != 0) {
@@ -204,6 +205,7 @@ public class Voyage extends AbstractVoyage {
 							wait(300);
 						}
 					}
+					direction = getSimulatedvoyageur().getDirection();
 					if (direction == "S") {
 						if (xDistance > 0) {
 							while (xDistance != 0) {
@@ -226,6 +228,7 @@ public class Voyage extends AbstractVoyage {
 							wait(300);
 						}
 					}
+					direction = getSimulatedvoyageur().getDirection();
 					if (direction == "E") {
 						if (yDistance > 0) {
 							while (yDistance != 0) {
@@ -248,6 +251,7 @@ public class Voyage extends AbstractVoyage {
 							wait(300);
 						}
 					}
+					direction = getSimulatedvoyageur().getDirection();
 					if (direction == "W") {
 						if (yDistance > 0) {
 							while (yDistance != 0) {
@@ -283,10 +287,12 @@ public class Voyage extends AbstractVoyage {
 				AbstractAnimation roche = new AnimationFlash();
 				roche.setEcranDeb(planete.getImage());
 				roche.setEcranFin(planete.getEchantillonRoche());
+				roche.runAnimation();
 				wait(1000);
 				AbstractAnimation retourPlaneteDeRoche = new AnimationFlash();
 				retourPlaneteDeRoche.setEcranDeb(planete.getEchantillonRoche());
 				retourPlaneteDeRoche.setEcranFin(planete.getImage());
+				retourPlaneteDeRoche.runAnimation();
 			}
 			if (planete.getEchantillonSol() != null && !planeteVisitée.contains(planete)
 					&& !getSimulatedvoyageur().getListEchantillonSol().contains(planete.getEchantillonSol())) {
@@ -294,10 +300,12 @@ public class Voyage extends AbstractVoyage {
 				AbstractAnimation sol = new AnimationFlash();
 				sol.setEcranDeb(planete.getImage());
 				sol.setEcranFin(planete.getEchantillonSol());
+				sol.runAnimation();
 				wait(1000);
 				AbstractAnimation retourPlaneteDeSol = new AnimationFlash();
 				retourPlaneteDeSol.setEcranDeb(planete.getEchantillonSol());
 				retourPlaneteDeSol.setEcranFin(planete.getImage());
+				retourPlaneteDeSol.runAnimation();
 			}
 			if (!planeteVisitée.contains(planete)) {
 				planeteVisitée.add(planete);
