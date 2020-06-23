@@ -1,63 +1,50 @@
 package fr.emac.gipsi.gsi.launch;
 
-import java.util.ArrayList;
-
-import fr.emac.gipsi.gsi.ecran.ListScreen;
+import fr.emac.gipsi.gsi.screen.Screen;
 import fr.emac.gipsi.gsi.voyage.Planete;
 import fr.emac.gipsi.gsi.voyage.Voyage;
 import fr.emac.gipsi.gsi.voyageur.AbstractVoyageur;
 import fr.emac.gipsi.gsi.voyageur.VoyageurSimuler;
 
-//COCO tu casses les couilles à ne pas savoir utiliser ton ordi.
+import java.util.ArrayList;
+
 public class LaunchVoyage {
 
 	public static void main(String[] args) {
-
 		ArrayList<Planete> listPlanete = new ArrayList<>();
 
 		Planete p1 = new Planete();
-		p1.setColorName("DarkSalmon");
-		p1.setImage(ListScreen.landscapeP1());
-		p1.setEchantillonRoche(ListScreen.second());
-		p1.setEchantillonSol(ListScreen.first());
-		p1.setRayon(1);
+		p1.setColorName("HotPink");
 		p1.getPos().setX(2);
 		p1.getPos().setY(2);
-
-		listPlanete.add(p1);
-
+		p1.setEchantillonRoche(new Screen());
+		p1.setEchantillonSol(new Screen());
+		
 		Planete p2 = new Planete();
-		p2.setColorName("DeepSkyBlue");
-		p2.setImage(ListScreen.landscapeP2());
-		p2.setEchantillonRoche(ListScreen.second());
-		p2.setEchantillonSol(ListScreen.first());
-		p2.setRayon(1);
-		p2.getPos().setX(5);
-		p2.getPos().setY(5);
-		p2.getListAccessibilite().add(p1);
-
-		listPlanete.add(p2);
-
+		p2.setColorName("HotPink");
+		p2.getPos().setX(2);
+		p2.getPos().setY(7);
+		
 		Planete p3 = new Planete();
 		p3.setColorName("HotPink");
 		p3.getPos().setX(2);
 		p3.getPos().setY(12);
-		p3.setEchantillonRoche(ListScreen.second());
-		p3.setEchantillonSol(ListScreen.first());
-
+		p3.setEchantillonRoche(new Screen());
+		p3.setEchantillonSol(new Screen());
+		
 		Planete p4 = new Planete();
 		p4.setColorName("HotPink");
 		p4.getPos().setX(7);
 		p4.getPos().setY(2);
-		p4.setEchantillonRoche(ListScreen.second());
-		p4.setEchantillonSol(ListScreen.first());
-
+		p4.setEchantillonRoche(new Screen());
+		p4.setEchantillonSol(new Screen());
+		
 		Planete p5 = new Planete();
 		p5.setColorName("HotPink");
 		p5.getPos().setX(7);
 		p5.getPos().setY(7);
-		p5.setEchantillonRoche(ListScreen.second());
-		p5.setEchantillonSol(ListScreen.first());
+		p5.setEchantillonRoche(new Screen());
+		p5.setEchantillonSol(new Screen());
 
 		listPlanete.add(p1);
 		listPlanete.add(p2);
@@ -78,17 +65,14 @@ public class LaunchVoyage {
 		listPlanete.get(i).getPos().setY(1);
 		listPlanete.get(i).setColorName("Magenta");
 		i++;
-
 		listPlanete.get(i).getPos().setX(6);
 		listPlanete.get(i).getPos().setY(4);
 		listPlanete.get(i).setColorName("PapayaWhip");
 		i++;
-
 		listPlanete.get(i).getPos().setX(4);
 		listPlanete.get(i).getPos().setY(4);
 		listPlanete.get(i).setColorName("White");
 		i++;
-
 		listPlanete.get(i).getPos().setX(4);
 		listPlanete.get(i).getPos().setY(7);
 		listPlanete.get(i).setColorName("Red");
@@ -96,12 +80,6 @@ public class LaunchVoyage {
 		listPlanete.get(i).getPos().setX(4);
 		listPlanete.get(i).getPos().setY(10);
 		listPlanete.get(i).setColorName("Green");
-		i++;
-
-		listPlanete.get(i).getPos().setX(2);
-		listPlanete.get(i).getPos().setY(7);
-		listPlanete.get(i).setColorName("MediumVioletRed");
-		i++;
 
 		for (Planete p : listPlanete) {
 			for (Planete subP : listPlanete) {
@@ -115,17 +93,11 @@ public class LaunchVoyage {
 		listPlanete.get(1).getListAccessibilite().remove(listPlanete.get(0));
 		listPlanete.get(1).getListAccessibilite().remove(listPlanete.get(3));
 		listPlanete.get(1).getListAccessibilite().remove(listPlanete.get(4));
-		listPlanete.get(1).getListAccessibilite().remove(listPlanete.get(5));
 
-		listPlanete.get(5).getListAccessibilite().remove(listPlanete.get(0));
-		listPlanete.get(5).getListAccessibilite().remove(listPlanete.get(1));
-		listPlanete.get(5).getListAccessibilite().remove(listPlanete.get(4));
-		listPlanete.get(5).getListAccessibilite().remove(listPlanete.get(2));
-
-		AbstractVoyageur simulatedVoyageur = new VoyageurSimuler();
+		AbstractVoyageur simulatedVoyageur = new VoyageurSimuler(); // voyageur qui va faire le parcours
 
 		simulatedVoyageur.getPosTete().setX(listPlanete.get(0).getPos().getX());
-		simulatedVoyageur.getPosTete().setY(listPlanete.get(0).getPos().getY() + 1);
+		simulatedVoyageur.getPosTete().setY(listPlanete.get(0).getPos().getY()+1);
 		simulatedVoyageur.getPosBody().setX(listPlanete.get(0).getPos().getX());
 		simulatedVoyageur.getPosBody().setY(listPlanete.get(0).getPos().getY());
 		simulatedVoyageur.setDirection("E");

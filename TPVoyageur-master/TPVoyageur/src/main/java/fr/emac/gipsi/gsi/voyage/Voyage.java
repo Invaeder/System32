@@ -313,23 +313,27 @@ public class Voyage extends AbstractVoyage {
 			for (Planete planetegaz : planete.getListVisibilite()) {
 				int xPlanetegaz = planetegaz.getPos().getX();
 				int yPlanetegaz = planetegaz.getPos().getY();
-				if (planetegaz.getEchantillonSol() == null && getSimulatedvoyageur().getListPhotographie().contains(planetegaz.getImage())) {
-					if (xPlanetegaz-xRover == 0) {
-						if (yPlanetegaz-yRover > 0) {
-							if (direction == 'E') {
+				if (planetegaz.getEchantillonSol() == null
+						&& !getSimulatedvoyageur().getListPhotographie().contains(planetegaz.getImage())) {
+					if (yPlanetegaz - yRover == 0) {
+						if (xPlanetegaz - xRover > 0) {
+							if (getSimulatedvoyageur().getDirection() == "E") {
 								getSimulatedvoyageur().turnRight();
-							} else { while (direction != 'S') {
-								getSimulatedvoyageur().turnLeft;
-							  }
+							} else {
+								while (getSimulatedvoyageur().getDirection() != "S") {
+									getSimulatedvoyageur().turnLeft();
+								}
+							}
 						}
-					} else { if (xPlanetegaz-xRover > 0) {
-									if (direction == 'S') {
-										getSimulatedvoyageur().turnRight;
-									} else { while (direction != 'E') {
-											 	getSimulatedvoyageur().turnLeft;
-											 }
-									  }
-					  }
+					} else if (yPlanetegaz - yRover > 0) {
+						if (getSimulatedvoyageur().getDirection() == "N") {
+							getSimulatedvoyageur().turnRight();
+						} else {
+							while (getSimulatedvoyageur().getDirection() != "E") {
+								getSimulatedvoyageur().turnLeft();
+							}
+						}
+					}
 				}
 			}
 		}
