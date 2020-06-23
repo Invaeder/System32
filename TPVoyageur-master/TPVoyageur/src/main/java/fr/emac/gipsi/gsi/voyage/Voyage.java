@@ -128,7 +128,7 @@ public class Voyage extends AbstractVoyage {
 			}
 			for (int k = 1; k < listDistancesActuelles.size(); k++) {
 				int dist = listDistancesActuelles.get(k);
-				if (dist < minDist && !planetesVisitées.contains(listAccesActuel.get(k))) {
+				if (dist <= minDist && !planetesVisitées.contains(listAccesActuel.get(k))) {
 					minDist = dist;
 					indice = k;
 				}
