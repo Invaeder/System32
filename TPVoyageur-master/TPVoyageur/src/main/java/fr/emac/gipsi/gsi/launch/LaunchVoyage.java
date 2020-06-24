@@ -1,5 +1,6 @@
 package fr.emac.gipsi.gsi.launch;
 
+import fr.emac.gipsi.gsi.ecran.ListScreen;
 import fr.emac.gipsi.gsi.screen.Screen;
 import fr.emac.gipsi.gsi.voyage.Planete;
 import fr.emac.gipsi.gsi.voyage.Voyage;
@@ -19,6 +20,7 @@ public class LaunchVoyage {
 		p1.getPos().setY(2);
 		p1.setEchantillonRoche(ListScreen.roche1());
 		p1.setEchantillonSol(ListScreen.landscapeP1());
+		p1.setImage(ListScreen.first());
 		
 		Planete p2 = new Planete();
 		p2.setColorName("HotPink");
@@ -26,6 +28,7 @@ public class LaunchVoyage {
 		p2.getPos().setY(7);
 		p2.setEchantillonRoche(ListScreen.roche2());
 		p2.setEchantillonSol(ListScreen.landscapeP2());
+		p2.setImage(ListScreen.second());
 		
 		Planete p3 = new Planete();
 		p3.setColorName("HotPink");
@@ -33,6 +36,7 @@ public class LaunchVoyage {
 		p3.getPos().setY(12);
 		p3.setEchantillonRoche(ListScreen.roche3());
 		p3.setEchantillonSol(ListScreen.landscapeP3());
+		p3.setImage(ListScreen.first());
 		
 		Planete p4 = new Planete();
 		p4.setColorName("HotPink");
@@ -40,6 +44,7 @@ public class LaunchVoyage {
 		p4.getPos().setY(2);
 		p4.setEchantillonRoche(ListScreen.roche4());
 		p4.setEchantillonSol(ListScreen.landscapeP4());
+		p4.setImage(ListScreen.second());
 		
 		Planete p5 = new Planete();
 		p5.setColorName("HotPink");
@@ -47,6 +52,7 @@ public class LaunchVoyage {
 		p5.getPos().setY(7);
 		p5.setEchantillonRoche(ListScreen.roche5());
 		p5.setEchantillonSol(new Screen());
+		p5.setImage(ListScreen.first());
 
 		listPlanete.add(p1);
 		listPlanete.add(p2);

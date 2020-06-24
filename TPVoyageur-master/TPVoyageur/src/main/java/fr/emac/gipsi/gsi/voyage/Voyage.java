@@ -252,7 +252,7 @@ public class Voyage extends AbstractVoyage {
 			if (!getSimulatedvoyageur().getListPhotographie().contains(planete.getImage())) {
 				getSimulatedvoyageur().takePicture(planete);
 			}
-			if (planete.getEchantillonRoche() != null && !planeteVisitée.contains(planete)
+			if (!planete.getEchantillonRoche().equals(null) && !planeteVisitée.contains(planete)
 					&& !getSimulatedvoyageur().getListEchantillonRoche().contains(planete.getEchantillonRoche())) {
 				getSimulatedvoyageur().takeEchantillonRoche(planete);
 				AbstractAnimation roche = new AnimationFlash();
@@ -265,7 +265,7 @@ public class Voyage extends AbstractVoyage {
 				retourPlaneteDeRoche.setEcranFin(planete.getImage());
 				retourPlaneteDeRoche.runAnimation();
 			}
-			if (planete.getEchantillonSol() != null && !planeteVisitée.contains(planete)
+			if (!planete.getEchantillonSol().equals(null) && !planeteVisitée.contains(planete)
 					&& !getSimulatedvoyageur().getListEchantillonSol().contains(planete.getEchantillonSol())) {
 				getSimulatedvoyageur().takeEchantillonSol(planete);
 				AbstractAnimation sol = new AnimationFlash();
@@ -286,7 +286,7 @@ public class Voyage extends AbstractVoyage {
 			for (Planete planetegaz : planete.getListVisibilite()) {
 				int xPlanetegaz = planetegaz.getPos().getX();
 				int yPlanetegaz = planetegaz.getPos().getY();
-				if (planetegaz.getEchantillonSol() == null
+				if (planetegaz.getEchantillonSol().equals(null)
 						&& !getSimulatedvoyageur().getListPhotographie().contains(planetegaz.getImage())) {
 					if (yPlanetegaz - yRover == 0) {
 						if (xPlanetegaz - xRover > 0) {
