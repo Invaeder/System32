@@ -105,7 +105,7 @@ public class Voyage extends AbstractVoyage {
 		Planete pActuelle = planeteDép;
 		ordrePlaneteVoyage.add(planeteDép);
 		ArrayList<Integer> listDistancesActuelles = new ArrayList<>();
-		while (planetesVisitables.size() != planetesVisitées.size()) {
+		while (planetesVisitables.size() < planetesVisitées.size()) {
 			ArrayList<Planete> listAccesActuel = pActuelle.getListAccessibilite();
 			for (Planete planete : listAccesActuel) {
 				if (culDeSac.contains(planete)) {
