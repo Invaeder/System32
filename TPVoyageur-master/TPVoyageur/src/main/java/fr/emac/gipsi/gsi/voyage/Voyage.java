@@ -69,8 +69,16 @@ public class Voyage extends AbstractVoyage {
 		int xRover = getSimulatedvoyageur().getPosBody().getX();
 		int yRover = getSimulatedvoyageur().getPosBody().getY();
 		Planete planeteDép = new Planete();
+		ArrayList<Planete> listePlanetePropre = new ArrayList<Planete>();
+
+		// J'enlève les null de listPlanete parce qu'il y en a et ça gène
+		for (Planete pPropre : listPlanete) {
+			if (!pPropre.equals(null)) {
+				listePlanetePropre.add(pPropre);
+			}
+		}
 		while (again) {
-			planeteDép = listPlanete.get(i);
+			planeteDép = listePlanetePropre.get(i);
 			if (xRover == planeteDép.getPos().getX() && yRover == planeteDép.getPos().getY()) {
 				ordrePlaneteVoyage.add(planeteDép);
 				again = false;
@@ -81,7 +89,7 @@ public class Voyage extends AbstractVoyage {
 		// Création de la liste des planètes visitables :
 		ArrayList<Planete> planetesVisitables = new ArrayList<Planete>();
 		planetesVisitables.add(planeteDép);
-		for (Planete pi : listPlanete) {
+		for (Planete pi : listePlanetePropre) {
 			if (pi.getEchantillonSol() != null && !planetesVisitables.contains(pi)) {
 				planetesVisitables.add(pi);
 			}
@@ -89,7 +97,7 @@ public class Voyage extends AbstractVoyage {
 		ArrayList<Planete> planetesVisitées = new ArrayList<Planete>();
 		planetesVisitées.add(planeteDép);
 		ArrayList<Planete> culDeSac = new ArrayList<Planete>();
-		for (Planete planete : listPlanete) {
+		for (Planete planete : listePlanetePropre) {
 			if (planete.getListAccessibilite().size() == 1) {
 				culDeSac.add(planete);
 			}
@@ -106,9 +114,7 @@ public class Voyage extends AbstractVoyage {
 					planetesVisitées.add(planete);
 				}
 				calculDistance(pActuelle, planete);
-				if (distance > 0) {
-					listDistancesActuelles.add(distance);
-				}
+				listDistancesActuelles.add(distance);
 			}
 			int minDist = listDistancesActuelles.get(0);
 			int indice = 0;
@@ -122,6 +128,12 @@ public class Voyage extends AbstractVoyage {
 			ordrePlaneteVoyage.add(listAccesActuel.get(indice));
 			planetesVisitées.add(listAccesActuel.get(indice));
 			pActuelle = listAccesActuel.get(indice);
+		}
+		// On enlève les potentiels doublons
+		for (int j = 1; j < ordrePlaneteVoyage.size(); j++) {
+			if (ordrePlaneteVoyage.get(j) == ordrePlaneteVoyage.get(j-1)) {
+				ordrePlaneteVoyage.remove(j);
+			}
 		}
 	}
 
