@@ -94,8 +94,8 @@ public class Voyage extends AbstractVoyage {
 				planetesVisitables.add(pi);
 			}
 		}
-		ArrayList<Planete> planetesVisitées = new ArrayList<Planete>();
-		planetesVisitées.add(planeteDép);
+		ArrayList<Planete> planetesVisitees = new ArrayList<Planete>();
+		planetesVisitees.add(planeteDép);
 		ArrayList<Planete> culDeSac = new ArrayList<Planete>();
 		for (Planete planete : listePlanetePropre) {
 			if (planete.getListAccessibilite().size() == 1) {
@@ -105,13 +105,13 @@ public class Voyage extends AbstractVoyage {
 		Planete pActuelle = planeteDép;
 		ordrePlaneteVoyage.add(planeteDép);
 		ArrayList<Integer> listDistancesActuelles = new ArrayList<>();
-		while (planetesVisitables.size() < planetesVisitées.size()) {
+		while (planetesVisitables.size() < planetesVisitees.size()) {
 			ArrayList<Planete> listAccesActuel = pActuelle.getListAccessibilite();
 			for (Planete planete : listAccesActuel) {
 				if (culDeSac.contains(planete)) {
 					ordrePlaneteVoyage.add(planete);
 					ordrePlaneteVoyage.add(pActuelle);
-					planetesVisitées.add(planete);
+					planetesVisitees.add(planete);
 				}
 				calculDistance(pActuelle, planete);
 				listDistancesActuelles.add(distance);
@@ -120,13 +120,13 @@ public class Voyage extends AbstractVoyage {
 			int indice = 0;
 			for (int k = 1; k < listAccesActuel.size(); k++) {
 				int dist = listDistancesActuelles.get(k);
-				if (dist <= minDist && !planetesVisitées.contains(listAccesActuel.get(k))) {
+				if (dist <= minDist && !planetesVisitees.contains(listAccesActuel.get(k))) {
 					minDist = dist;
 					indice = k;
 				}
 			}
 			ordrePlaneteVoyage.add(listAccesActuel.get(indice));
-			planetesVisitées.add(listAccesActuel.get(indice));
+			planetesVisitees.add(listAccesActuel.get(indice));
 			pActuelle = listAccesActuel.get(indice);
 		}
 		// On enlève les potentiels doublons
@@ -141,7 +141,7 @@ public class Voyage extends AbstractVoyage {
 	public void lancementSimuler() {
 		afficheEcran();
 		calculduchemin();
-		ArrayList<Planete> planeteVisitée = new ArrayList<Planete>();
+		ArrayList<Planete> planeteVisitee = new ArrayList<Planete>();
 		for (Planete planete : ordrePlaneteVoyage) {
 			int xRover = getSimulatedvoyageur().getPosBody().getX();
 			int yRover = getSimulatedvoyageur().getPosBody().getY();
@@ -252,7 +252,7 @@ public class Voyage extends AbstractVoyage {
 			if (!getSimulatedvoyageur().getListPhotographie().contains(planete.getImage())) {
 				getSimulatedvoyageur().takePicture(planete);
 			}
-			if (!planete.getEchantillonRoche().equals(null) && !planeteVisitée.contains(planete)
+			if (!planete.getEchantillonRoche().equals(null) && !planeteVisitee.contains(planete)
 					&& !getSimulatedvoyageur().getListEchantillonRoche().contains(planete.getEchantillonRoche())) {
 				getSimulatedvoyageur().takeEchantillonRoche(planete);
 				AbstractAnimation roche = new AnimationFlash();
@@ -265,7 +265,7 @@ public class Voyage extends AbstractVoyage {
 				retourPlaneteDeRoche.setEcranFin(planete.getImage());
 				retourPlaneteDeRoche.runAnimation();
 			}
-			if (!planete.getEchantillonSol().equals(null) && !planeteVisitée.contains(planete)
+			if (!planete.getEchantillonSol().equals(null) && !planeteVisitee.contains(planete)
 					&& !getSimulatedvoyageur().getListEchantillonSol().contains(planete.getEchantillonSol())) {
 				getSimulatedvoyageur().takeEchantillonSol(planete);
 				AbstractAnimation sol = new AnimationFlash();
@@ -278,8 +278,8 @@ public class Voyage extends AbstractVoyage {
 				retourPlaneteDeSol.setEcranFin(planete.getImage());
 				retourPlaneteDeSol.runAnimation();
 			}
-			if (!planeteVisitée.contains(planete)) {
-				planeteVisitée.add(planete);
+			if (!planeteVisitee.contains(planete)) {
+				planeteVisitee.add(planete);
 			}
 			// Prise de photo des planètes accessible de nul part mais visible de là où on
 			// est
