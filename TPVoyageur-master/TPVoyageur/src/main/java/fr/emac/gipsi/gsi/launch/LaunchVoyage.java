@@ -36,7 +36,7 @@ public class LaunchVoyage {
 		p3.getPos().setY(12);
 		p3.setEchantillonRoche(ListScreen.roche3());
 		p3.setEchantillonSol(ListScreen.landscapeP3());
-		p3.setImage(ListScreen.first());
+		p3.setImage(ListScreen.PlaneteAnol());
 		
 		Planete p4 = new Planete();
 		p4.setColorName("HotPink");
