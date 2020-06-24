@@ -45,12 +45,12 @@ public class Voyage extends AbstractVoyage {
 
 	private int distance = -1;
 
-	public void calculDistance(Planete p1, Planete p2) {
-		if (p1.getListVisibilite().contains(p2)) {
-			int xp1 = p1.getPos().getX();
-			int yp1 = p1.getPos().getY();
-			int xp2 = p2.getPos().getX();
-			int yp2 = p2.getPos().getY();
+	public void calculDistance(Planete planete1, Planete planete2) {
+		if (planete1.getListVisibilite().contains(planete2)) {
+			int xp1 = planete1.getPos().getX();
+			int yp1 = planete1.getPos().getY();
+			int xp2 = planete2.getPos().getX();
+			int yp2 = planete2.getPos().getY();
 			distance = Math.abs(xp1 - xp2) + Math.abs(yp1 - yp2);
 		} else {
 			distance = -1;
@@ -86,19 +86,8 @@ public class Voyage extends AbstractVoyage {
 				planetesVisitables.add(pi);
 			}
 		}
-
-		// Création de la matrice des distances entre les planètes visitables :
-		// inutile du coup...
-		/*
-		 * ArrayList<ArrayList<Integer>> mDistance = new
-		 * ArrayList<ArrayList<Integer>>(); // mDistance.get(i).set(j, valeur); i = 0;
-		 * for (Planete pLig : planetesVisitables) { for (Planete pCol :
-		 * planetesVisitables) { calculDistance(pLig, pCol);
-		 * mDistance.get(i).add(distance); } i++; }
-		 */
 		ArrayList<Planete> planetesVisitées = new ArrayList<Planete>();
 		planetesVisitées.add(planeteDép);
-		// Planete dernièrePlanete = planeteDép;
 		ArrayList<Planete> culDeSac = new ArrayList<Planete>();
 		for (Planete planete : listPlanete) {
 			if (planete.getListAccessibilite().size() == 1) {
@@ -117,16 +106,13 @@ public class Voyage extends AbstractVoyage {
 					planetesVisitées.add(planete);
 				}
 				calculDistance(pActuelle, planete);
-				listDistancesActuelles.add(distance);
+				if (distance > 0) {
+					listDistancesActuelles.add(distance);
+				}
 			}
 			int minDist = listDistancesActuelles.get(0);
 			int indice = 0;
-			for (int j = 0; j < listAccesActuel.size(); j++) {
-				if (!culDeSac.contains(listAccesActuel.get(j))) {
-					indice = j;
-				}
-			}
-			for (int k = 1; k < listDistancesActuelles.size(); k++) {
+			for (int k = 1; k < listAccesActuel.size(); k++) {
 				int dist = listDistancesActuelles.get(k);
 				if (dist <= minDist && !planetesVisitées.contains(listAccesActuel.get(k))) {
 					minDist = dist;
@@ -137,33 +123,6 @@ public class Voyage extends AbstractVoyage {
 			planetesVisitées.add(listAccesActuel.get(indice));
 			pActuelle = listAccesActuel.get(indice);
 		}
-
-		/*
-		 * ArrayList<ArrayList<Planete>> mPlanete = new ArrayList<ArrayList<Planete>>();
-		 * i = 0; for (Planete p1 : planetesVisitables) { for (Planete p2 :
-		 * planetesVisitables) { if (p1 != p2 && p1.getListAccessibilite().contains(p2))
-		 * { mPlanete.get(i).add(p1); mPlanete.get(i).add(p2); } } i++; } int m =
-		 * mPlanete.size(); ArrayList<ArrayList<Planete>> mChemins = new
-		 * ArrayList<ArrayList<Planete>>(); for (int k = 0; k < m; k++) { if
-		 * (mPlanete.get(i).get(0) == planeteDép) { while (planetesVisitables.size() !=
-		 * planetesVisitées.size()) { for (int j = 0; j < m; j++) { if
-		 * (planetesVisitées.get(-1) == mPlanete.get(j).get(0) && ) {
-		 * 
-		 * } } } } }
-		 */
-
-		/*
-		 * ArrayList<ArrayList<Planete>> mChemins = new ArrayList<ArrayList<Planete>>();
-		 * int i = 0;
-		 *
-		 * int j = 0; for (Planete p1 : dernièrePlanete.getListAccessibilite()) {
-		 * 
-		 * for (Planete p2 : p1.getListAccessibilite()) { while (planetesVisitées.size()
-		 * != planetesVisitables.size()) { planetesVisitées.add(dernièrePlanete); if
-		 * (culDeSac.contains(p2)) { planetesVisitées.add(p2);
-		 * 
-		 * } } j++; } dernièrePlanete = i++; }
-		 */
 	}
 
 	@Override
@@ -310,6 +269,8 @@ public class Voyage extends AbstractVoyage {
 			if (!planeteVisitée.contains(planete)) {
 				planeteVisitée.add(planete);
 			}
+			// Prise de photo des planètes accessible de nul part mais visible de là où on
+			// est
 			for (Planete planetegaz : planete.getListVisibilite()) {
 				int xPlanetegaz = planetegaz.getPos().getX();
 				int yPlanetegaz = planetegaz.getPos().getY();
