@@ -44,15 +44,15 @@ public class LaunchVoyage {
 		p4.getPos().setY(2);
 		p4.setEchantillonRoche(ListScreen.roche4());
 		p4.setEchantillonSol(ListScreen.landscapeP4());
-		p4.setImage(ListScreen.second());
+		p4.setImage(ListScreen.billard());
 		
 		Planete p5 = new Planete();
 		p5.setColorName("HotPink");
 		p5.getPos().setX(7);
 		p5.getPos().setY(7);
 		p5.setEchantillonRoche(ListScreen.roche5());
-		p5.setEchantillonSol(new Screen());
-		p5.setImage(ListScreen.first());
+		p5.setEchantillonSol(ListScreen.solExplorer());
+		p5.setImage(ListScreen.Explorer());
 
 		listPlanete.add(p1);
 		listPlanete.add(p2);
