@@ -17,33 +17,35 @@ public class LaunchVoyage {
 		p1.setColorName("HotPink");
 		p1.getPos().setX(2);
 		p1.getPos().setY(2);
-		p1.setEchantillonRoche(new Screen());
-		p1.setEchantillonSol(new Screen());
+		p1.setEchantillonRoche(ListScreen.roche1());
+		p1.setEchantillonSol(ListScreen.landscapeP1());
 		
 		Planete p2 = new Planete();
 		p2.setColorName("HotPink");
 		p2.getPos().setX(2);
 		p2.getPos().setY(7);
+		p2.setEchantillonRoche(ListScreen.roche2());
+		p2.setEchantillonSol(ListScreen.landscapeP2());
 		
 		Planete p3 = new Planete();
 		p3.setColorName("HotPink");
 		p3.getPos().setX(2);
 		p3.getPos().setY(12);
-		p3.setEchantillonRoche(new Screen());
-		p3.setEchantillonSol(new Screen());
+		p3.setEchantillonRoche(ListScreen.roche3());
+		p3.setEchantillonSol(ListScreen.landscapeP3());
 		
 		Planete p4 = new Planete();
 		p4.setColorName("HotPink");
 		p4.getPos().setX(7);
 		p4.getPos().setY(2);
-		p4.setEchantillonRoche(new Screen());
-		p4.setEchantillonSol(new Screen());
+		p4.setEchantillonRoche(ListScreen.roche4());
+		p4.setEchantillonSol(ListScreen.landscapeP4());
 		
 		Planete p5 = new Planete();
 		p5.setColorName("HotPink");
 		p5.getPos().setX(7);
 		p5.getPos().setY(7);
-		p5.setEchantillonRoche(new Screen());
+		p5.setEchantillonRoche(ListScreen.roche5());
 		p5.setEchantillonSol(new Screen());
 
 		listPlanete.add(p1);
