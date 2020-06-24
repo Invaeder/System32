@@ -68,7 +68,7 @@ public class Voyage extends AbstractVoyage {
 		int i = 0;
 		int xRover = getSimulatedvoyageur().getPosBody().getX();
 		int yRover = getSimulatedvoyageur().getPosBody().getY();
-		Planete planeteDép = new Planete();
+		Planete planeteDep = new Planete();
 		ArrayList<Planete> listePlanetePropre = new ArrayList<Planete>();
 
 		// J'enlève les null de listPlanete parce qu'il y en a et ça gène
@@ -77,10 +77,12 @@ public class Voyage extends AbstractVoyage {
 				listePlanetePropre.add(pPropre);
 			}
 		}
+
+		// On détermine la planète de départ
 		while (again) {
-			planeteDép = listePlanetePropre.get(i);
-			if (xRover == planeteDép.getPos().getX() && yRover == planeteDép.getPos().getY()) {
-				ordrePlaneteVoyage.add(planeteDép);
+			planeteDep = listePlanetePropre.get(i);
+			if (xRover == planeteDep.getPos().getX() && yRover == planeteDep.getPos().getY()) {
+				ordrePlaneteVoyage.add(planeteDep);
 				again = false;
 			}
 			i++;
@@ -88,22 +90,25 @@ public class Voyage extends AbstractVoyage {
 
 		// Création de la liste des planètes visitables :
 		ArrayList<Planete> planetesVisitables = new ArrayList<Planete>();
-		planetesVisitables.add(planeteDép);
+		planetesVisitables.add(planeteDep);
 		for (Planete pi : listePlanetePropre) {
 			if (pi.getEchantillonSol() != null && !planetesVisitables.contains(pi)) {
 				planetesVisitables.add(pi);
 			}
 		}
 		ArrayList<Planete> planetesVisitees = new ArrayList<Planete>();
-		planetesVisitees.add(planeteDép);
+		planetesVisitees.add(planeteDep);
 		ArrayList<Planete> culDeSac = new ArrayList<Planete>();
 		for (Planete planete : listePlanetePropre) {
 			if (planete.getListAccessibilite().size() == 1) {
 				culDeSac.add(planete);
 			}
 		}
-		Planete pActuelle = planeteDép;
-		ordrePlaneteVoyage.add(planeteDép);
+
+		// On fait le voyage, on va à la planète la plus proche à chaque fois, sauf si
+		// on détecte un cul-de-sac, là on fait l'aller-retour direct
+		Planete pActuelle = planeteDep;
+		ordrePlaneteVoyage.add(planeteDep);
 		ArrayList<Integer> listDistancesActuelles = new ArrayList<>();
 		while (planetesVisitables.size() < planetesVisitees.size()) {
 			ArrayList<Planete> listAccesActuel = pActuelle.getListAccessibilite();
@@ -131,7 +136,7 @@ public class Voyage extends AbstractVoyage {
 		}
 		// On enlève les potentiels doublons
 		for (int j = 1; j < ordrePlaneteVoyage.size(); j++) {
-			if (ordrePlaneteVoyage.get(j) == ordrePlaneteVoyage.get(j-1)) {
+			if (ordrePlaneteVoyage.get(j) == ordrePlaneteVoyage.get(j - 1)) {
 				ordrePlaneteVoyage.remove(j);
 			}
 		}
@@ -142,16 +147,21 @@ public class Voyage extends AbstractVoyage {
 		afficheEcran();
 		calculduchemin();
 		ArrayList<Planete> planeteVisitee = new ArrayList<Planete>();
+
+		// On parcours toutes les planètes selon l'ordre de voyage calculé juste avant
+		// par calculduchemin
 		for (Planete planete : ordrePlaneteVoyage) {
 			int xRover = getSimulatedvoyageur().getPosBody().getX();
 			int yRover = getSimulatedvoyageur().getPosBody().getY();
 			int xPlanete = planete.getPos().getX();
 			int yPlanete = planete.getPos().getY();
 			wait(300);
+			// On regarde si on est ppas déjà sur une planète
 			if (xRover != xPlanete || yRover != yPlanete) {
 				int xDistance = xPlanete - xRover;
 				int yDistance = yPlanete - yRover;
 				String direction = getSimulatedvoyageur().getDirection();
+				// Tant qu'on est pas sur la planète on avance
 				while (xDistance != 0 || yDistance != 0) {
 					direction = getSimulatedvoyageur().getDirection();
 					if (direction == "N") {
@@ -249,6 +259,7 @@ public class Voyage extends AbstractVoyage {
 
 			}
 			// Ici on est sorti du "if", on est donc sur une planète (inch'Allah)
+			// On prend donc les photos et échantillons
 			if (!getSimulatedvoyageur().getListPhotographie().contains(planete.getImage())) {
 				getSimulatedvoyageur().takePicture(planete);
 			}
@@ -281,6 +292,7 @@ public class Voyage extends AbstractVoyage {
 			if (!planeteVisitee.contains(planete)) {
 				planeteVisitee.add(planete);
 			}
+
 			// Prise de photo des planètes accessible de nul part mais visible de là où on
 			// est
 			for (Planete planetegaz : planete.getListVisibilite()) {
